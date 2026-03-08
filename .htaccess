@@ -1,0 +1,4 @@
+Options -Indexes
+
+# Página de erro 404 personalizada
+ErrorDocument 404 /404.html

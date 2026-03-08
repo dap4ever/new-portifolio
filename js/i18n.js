@@ -385,6 +385,10 @@ function setLanguage(lang) {
     }
     downloadLink.download = downloadNames[lang];
   }
+
+  // Sincroniza o idioma com o campo oculto do formulário de contato
+  const formLangField = document.getElementById('form-lang');
+  if (formLangField) formLangField.value = lang;
 }
 
 

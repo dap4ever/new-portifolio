@@ -1,732 +1,649 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfólio | Desenvolvedor Full-Stack</title>
 
-    <!-- Meta tags for SEO -->
-    <meta
-      name="description"
-      content="Portfólio moderno e profissional de UI/UX Design e Desenvolvimento. Confira meus projetos, habilidades e serviços."
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DWW | Desenvolvedor Full-Stack</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Meta tags for SEO -->
+  <meta name="description"
+    content="Portfólio moderno e profissional de UI/UX Design e Desenvolvimento. Confira meus projetos, habilidades e serviços." />
 
-    <!-- Font Awesome for Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-    <!-- Flag Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"
-    />
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="./css/style.css" />
-  </head>
-  <body>
-    <!-- Header / Navigation -->
-    <header class="header" id="header">
-      <div class="container header-container">
-        <a href="#" class="logo">
-          <i class="fa-solid fa-layer-group"></i>
-          <span>Portifólio.</span>
-        </a>
+  <!-- Flag Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
 
-        <nav class="nav" id="nav-menu">
-          <ul class="nav-list">
-            <li class="nav-item">
-              <a href="#home" class="nav-link active" data-i18n="nav-home"
-                >Home</a
-              >
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    /* === MODAL DE SUCESSO === */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .65);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all
+    }
+
+    .modal-box {
+      background: #12122a;
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 24px;
+      padding: 3rem 2.5rem;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      transform: translateY(30px) scale(.96);
+      transition: transform .35s cubic-bezier(.34, 1.56, .64, 1);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, .5)
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: translateY(0) scale(1)
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(255, 255, 255, .08);
+      border: none;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ccc;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, .15)
+    }
+
+    .modal-icon {
+      font-size: 4.5rem;
+      color: var(--clr-accent, #00d9c0);
+      margin-bottom: 1.25rem
+    }
+
+    .modal-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: .75rem
+    }
+
+    .modal-text {
+      font-size: 1rem;
+      color: #aaa;
+      margin-bottom: 2rem;
+      line-height: 1.6
+    }
+
+    .modal-btn {
+      width: 100%;
+      justify-content: center
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header / Navigation -->
+  <header class="header" id="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Portifólio.</span>
+      </a>
+
+      <nav class="nav" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#home" class="nav-link active" data-i18n="nav-home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#services" class="nav-link" data-i18n="nav-services">Serviços</a>
+          </li>
+          <li class="nav-item">
+            <a href="#skills" class="nav-link" data-i18n="nav-skills">Habilidades</a>
+          </li>
+          <li class="nav-item">
+            <a href="#portfolio" class="nav-link" data-i18n="nav-portfolio">Projetos</a>
+          </li>
+          <li class="nav-item">
+            <a href="#contact" class="nav-link" data-i18n="nav-contact">Contato</a>
+          </li>
+        </ul>
+
+        <div class="nav-close" id="nav-close">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Botão Dropdown de Idioma (Movido para o lugar correto) -->
+        <div class="lang-dropdown">
+          <button class="lang-dropdown-btn" id="lang-dropdown-btn">
+            <span class="fi fi-br" id="current-lang-flag"></span>
+            <span id="current-lang-text">Português</span>
+            <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem"></i>
+          </button>
+          <ul class="lang-dropdown-menu">
+            <li>
+              <a href="#" class="lang-option" data-lang="pt"><span class="fi fi-br"></span> Português</a>
             </li>
-            <li class="nav-item">
-              <a href="#services" class="nav-link" data-i18n="nav-services"
-                >Serviços</a
-              >
+            <li>
+              <a href="#" class="lang-option" data-lang="en"><span class="fi fi-us"></span> English</a>
             </li>
-            <li class="nav-item">
-              <a href="#skills" class="nav-link" data-i18n="nav-skills"
-                >Habilidades</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="#portfolio" class="nav-link" data-i18n="nav-portfolio"
-                >Projetos</a
-              >
-            </li>
-            <li class="nav-item">
-              <a href="#contact" class="nav-link" data-i18n="nav-contact"
-                >Contato</a
-              >
+            <li>
+              <a href="#" class="lang-option" data-lang="es"><span class="fi fi-es"></span> Español</a>
             </li>
           </ul>
+        </div>
 
-          <div class="nav-close" id="nav-close">
-            <i class="fa-solid fa-xmark"></i>
-          </div>
-        </nav>
-
-        <div class="header-actions">
-          <!-- Botão Dropdown de Idioma (Movido para o lugar correto) -->
-          <div class="lang-dropdown">
-            <button class="lang-dropdown-btn" id="lang-dropdown-btn">
-              <span class="fi fi-br" id="current-lang-flag"></span>
-              <span id="current-lang-text">Português</span>
-              <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem"></i>
-            </button>
-            <ul class="lang-dropdown-menu">
-              <li>
-                <a href="#" class="lang-option" data-lang="pt"
-                  ><span class="fi fi-br"></span> Português</a
-                >
-              </li>
-              <li>
-                <a href="#" class="lang-option" data-lang="en"
-                  ><span class="fi fi-us"></span> English</a
-                >
-              </li>
-              <li>
-                <a href="#" class="lang-option" data-lang="es"
-                  ><span class="fi fi-es"></span> Español</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <a href="#contact" class="btn btn-outline" data-i18n="nav-hire"
-            >Contrate-me <i class="fa-solid fa-angles-right"></i
-          ></a>
-          <div class="nav-toggle" id="nav-toggle">
-            <i class="fa-solid fa-bars-staggered"></i>
-          </div>
+        <a href="#contact" class="btn btn-outline" data-i18n="nav-hire">Contrate-me <i
+            class="fa-solid fa-angles-right"></i></a>
+        <div class="nav-toggle" id="nav-toggle">
+          <i class="fa-solid fa-bars-staggered"></i>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main class="main">
-      <!-- HERO SECTION -->
-      <section id="home" class="hero section">
-        <div class="container hero-container grid">
-          <div class="hero-content">
-            <span class="hero-subtitle" data-i18n="hero-subtitle"
-              >Desenvolvedor Web Full-Stack</span
-            >
-            <h1 class="hero-title" data-i18n="hero-title-1">
-              Olá! Eu sou o<br />
-              <span class="highlight">Danilo Pérez</span>
-              <svg
-                class="title-shape"
-                viewBox="0 0 200 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M0,10 Q50,20 100,10 T200,10"
-                  fill="none"
-                  stroke="var(--clr-accent)"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </h1>
-            <p class="hero-description" data-i18n="hero-description">
-              Especialista em construir aplicações robustas, sistemas escaláveis
-              e experiências de usuário dinâmicas utilizando tecnologias
-              modernas do front ao back-end.
-            </p>
-            <div class="hero-btns">
-              <a
-                href="#portfolio"
-                class="btn btn-primary"
-                data-i18n="hero-btn-portfolio"
-                >Ver Portfólio <i class="fa-solid fa-arrow-right"></i
-              ></a>
-              <!-- <a
+  <main class="main">
+    <!-- HERO SECTION -->
+    <section id="home" class="hero section">
+      <div class="container hero-container grid">
+        <div class="hero-content">
+          <span class="hero-subtitle" data-i18n="hero-subtitle">Desenvolvedor Web Full-Stack</span>
+          <h1 class="hero-title" data-i18n="hero-title-1">
+            Olá! Eu sou o<br />
+            <span class="highlight">Danilo Pérez</span>
+            <svg class="title-shape" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0,10 Q50,20 100,10 T200,10" fill="none" stroke="var(--clr-accent)" stroke-width="4"
+                stroke-linecap="round" />
+            </svg>
+          </h1>
+          <p class="hero-description" data-i18n="hero-description">
+            Especialista em construir aplicações robustas, sistemas escaláveis
+            e experiências de usuário dinâmicas utilizando tecnologias
+            modernas do front ao back-end.
+          </p>
+          <div class="hero-btns">
+            <a href="#portfolio" class="btn btn-primary" data-i18n="hero-btn-portfolio">Ver Portfólio <i
+                class="fa-solid fa-arrow-right"></i></a>
+            <!-- <a
                 href="#services"
                 class="btn btn-video"
                 data-i18n="hero-btn-video"
                 ><i class="fa-solid fa-circle-play"></i> Assistir Vídeo</a
               > -->
-            </div>
-          </div>
-          <div class="hero-img-container">
-            <div class="hero-circle-shape"></div>
-            <!-- Sua foto local (já copiada): -->
-            <img
-              src="./assets/img/hero-danilo.png"
-              alt="Minha Foto de Perfil"
-              class="hero-img"
-            />
-
-            <div class="hero-floating-icon f-icon-1">
-              <i class="fa-brands fa-java"></i>
-            </div>
-            <div class="hero-floating-icon f-icon-2">
-              <i class="fa-brands fa-react"></i>
-            </div>
-            <div class="hero-floating-icon f-icon-3">
-              <i class="fa-brands fa-php"></i>
-            </div>
-            <div class="hero-floating-icon f-icon-4">
-              <i class="fa-brands fa-angular"></i>
-            </div>
-            <div class="hero-floating-icon f-icon-5">
-              <i class="fa-brands fa-vuejs"></i>
-            </div>
           </div>
         </div>
-      </section>
+        <div class="hero-img-container">
+          <div class="hero-circle-shape"></div>
+          <!-- Sua foto local (já copiada): -->
+          <img src="./assets/img/hero-danilo.png" alt="Minha Foto de Perfil" class="hero-img" />
 
-      <!-- SERVICES SECTION -->
-      <section id="services" class="services section">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-subtitle" data-i18n="services-section-subtitle"
-              >| Meus Serviços</span
-            >
-            <h2 class="section-title" data-i18n="services-section-title">
-              Serviços Que Ofereço.
-            </h2>
+          <div class="hero-floating-icon f-icon-1">
+            <i class="fa-brands fa-java"></i>
           </div>
-
-          <div class="services-grid grid">
-            <div class="service-card active">
-              <div class="service-icon">
-                <i class="fa-brands fa-angular"></i>
-              </div>
-              <h3 class="service-title" data-i18n="service-1-title">
-                Front-End Avançado
-              </h3>
-              <ul class="service-list">
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-1-item-1"
-                    >Aplicações React & Vue</span
-                  >
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-1-item-2"
-                    >Interfaces em Angular</span
-                  >
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-1-item-3">Performance & SEO</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-1-item-4">Design Responsivo</span>
-                </li>
-              </ul>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fa-brands fa-java"></i>
-              </div>
-              <h3 class="service-title" data-i18n="service-2-title">
-                Back-End & APIs
-              </h3>
-              <ul class="service-list">
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-2-item-1">Arquitetura em Java</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-2-item-2">APIs RESTful com PHP</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-2-item-3"
-                    >Integrações Complexas</span
-                  >
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-2-item-4"
-                    >Banco de Dados & Segurança</span
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="service-card">
-              <div class="service-icon">
-                <i class="fa-brands fa-wordpress"></i>
-              </div>
-              <h3 class="service-title" data-i18n="service-3-title">
-                CMS & WordPress
-              </h3>
-              <ul class="service-list">
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-3-item-1">Temas Personalizados</span>
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-3-item-2"
-                    >Desenvolvimento de Plugins</span
-                  >
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-3-item-3"
-                    >Otimização de Lojas (WooCommerce)</span
-                  >
-                </li>
-                <li>
-                  <i class="fa-solid fa-angles-right"></i>
-                  <span data-i18n="service-3-item-4">Manutenção Avançada</span>
-                </li>
-              </ul>
-            </div>
+          <div class="hero-floating-icon f-icon-2">
+            <i class="fa-brands fa-react"></i>
           </div>
-        </div>
-      </section>
-
-      <!-- PORTFOLIO SECTION -->
-      <section id="portfolio" class="portfolio section">
-        <div class="container">
-          <div class="section-header">
-            <span
-              class="section-subtitle"
-              data-i18n="portfolio-section-subtitle"
-              >| Meu Portfólio</span
-            >
-            <h2 class="section-title" data-i18n="portfolio-section-title">
-              Projetos Recentes.
-            </h2>
+          <div class="hero-floating-icon f-icon-3">
+            <i class="fa-brands fa-php"></i>
           </div>
-
-          <div class="portfolio-grid grid">
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://agenciaf2f.com/wp-content/themes/agencia-new/assets/images/logos/novo-logo-banner-header.png"
-                  alt="Agência F2F"
-                  class="portfolio-img logo-mode dark-bg"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://agenciaf2f.com/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-1-cat"
-                  >WordPress / Marketing</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-1-title">
-                  Agência F2F MKT
-                </h3>
-              </div>
-            </div>
-
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://glp.com.br/wp-content/webp-express/webp-images/themes/glp/images/logo.png.webp"
-                  alt="GLP"
-                  class="portfolio-img logo-mode dark-bg"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://glp.com.br/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-2-cat"
-                  >WordPress / Corporativo</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-2-title">
-                  GLP Gestora de Galpões
-                </h3>
-              </div>
-            </div>
-
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://cuidadosemlimites.com.br/wp-content/uploads/2024/04/Logo_GEHealthcare-01.png"
-                  alt="Cuidado Sem Limites"
-                  class="portfolio-img logo-mode"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://cuidadosemlimites.com.br/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-3-cat"
-                  >WordPress / Saúde</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-3-title">
-                  Cuidado Sem Limites (GE)
-                </h3>
-              </div>
-            </div>
-
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://imobiliariainserra.com.br/wp-content/themes/imobiliaria-inserra/assets/images/inserra-logo.png"
-                  alt="Imobiliária Inserra"
-                  class="portfolio-img logo-mode"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://imobiliariainserra.com.br/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-4-cat"
-                  >WordPress / Imobiliário</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-4-title">
-                  Imobiliária Inserra
-                </h3>
-              </div>
-            </div>
-
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://www.newvalue.com.br/_nuxt/img/logo-newvalue.396df28.png"
-                  alt="New Value"
-                  class="portfolio-img logo-mode"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://www.newvalue.com.br/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-5-cat"
-                  >Vue & Laravel / Plataforma</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-5-title">
-                  New Value Benefícios
-                </h3>
-              </div>
-            </div>
-
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://diversihub.einstein.br/wp-content/themes/pullup-theme/assets/img/logo.svg"
-                  alt="Diversihub"
-                  class="portfolio-img logo-mode dark-bg"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://diversihub.einstein.br/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-6-cat"
-                  >WordPress / Institucional</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-6-title">
-                  Diversihub Einstein
-                </h3>
-              </div>
-            </div>
-
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://diabetessinlimites.com/wp-content/uploads/2026/02/Vector.png"
-                  alt="Diabetes Sin Limites"
-                  class="portfolio-img logo-mode"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://diabetessinlimites.com/mdi/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-7-cat"
-                  >WordPress / Landing Page</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-7-title">
-                  Diabetes Sin Limites
-                </h3>
-              </div>
-            </div>
-
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://abrafati.com.br/wp-content/themes/pro/images/logo.png"
-                  alt="Abrafati"
-                  class="portfolio-img logo-mode"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://abrafati.com.br/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-8-cat"
-                  >WordPress / Institucional</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-8-title">
-                  Abrafati
-                </h3>
-              </div>
-            </div>
-            <div class="portfolio-card">
-              <div class="portfolio-img-wrapper">
-                <img
-                  src="https://healthmeds.com.br/wp-content/uploads/2024/11/logo-header-health-meds_20240923-1555-1.webp"
-                  alt="Health Meds"
-                  class="portfolio-img logo-mode"
-                />
-                <div class="portfolio-overlay">
-                  <a
-                    href="https://healthmeds.com.br/"
-                    target="_blank"
-                    class="portfolio-link"
-                    ><i class="fa-solid fa-arrow-right"></i
-                  ></a>
-                </div>
-              </div>
-              <div class="portfolio-content">
-                <span class="portfolio-category" data-i18n="portfolio-9-cat"
-                  >WordPress / Saúde</span
-                >
-                <h3 class="portfolio-title" data-i18n="portfolio-9-title">
-                  Health Meds
-                </h3>
-              </div>
-            </div>
+          <div class="hero-floating-icon f-icon-4">
+            <i class="fa-brands fa-angular"></i>
           </div>
-        </div>
-      </section>
-
-      <!-- SKILLS SECTION -->
-      <section id="skills" class="skills section">
-        <div class="container skills-container grid">
-          <div class="skills-data">
-            <span class="section-subtitle" data-i18n="skills-section-subtitle"
-              >| Habilidades Especiais</span
-            >
-            <h2 class="section-title" data-i18n="skills-section-title">
-              Minha Zona de Genialidade.
-            </h2>
-            <p class="skills-description" data-i18n="skills-description">
-              Com sólida experiência técnica e uma visão aguçada para o design,
-              entrego produtos dinâmicos, completos e otimizados para encantar
-              usuários em todo o mundo.
-            </p>
-            <a
-              href="resume.html"
-              id="btn-resume-view"
-              class="btn btn-primary mt-4"
-              data-i18n="skills-btn"
-              style="position: relative; z-index: 99;"
-              >Visualizar Currículo <i class="fa-solid fa-eye"></i
-            ></a>
+          <div class="hero-floating-icon f-icon-5">
+            <i class="fa-brands fa-vuejs"></i>
           </div>
-
-          <div class="skills-bars">
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name" data-i18n="skill-1-name"
-                  >Front-End Avançado (React, Vue, Angular)</span
-                >
-                <span class="skill-percent">90%</span>
-              </div>
-              <div class="skill-bar">
-                <span class="skill-progress" style="width: 90%"></span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name" data-i18n="skill-2-name"
-                  >PHP & WordPress</span
-                >
-                <span class="skill-percent">85%</span>
-              </div>
-              <div class="skill-bar">
-                <span class="skill-progress" style="width: 85%"></span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name" data-i18n="skill-3-name"
-                  >Java & Arquitetura Back-End (Estudando)</span
-                >
-                <span class="skill-percent">60%</span>
-              </div>
-              <div class="skill-bar">
-                <span class="skill-progress" style="width: 60%"></span>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name" data-i18n="skill-4-name"
-                  >Banco de Dados & Integração REST</span
-                >
-                <span class="skill-percent">80%</span>
-              </div>
-              <div class="skill-bar">
-                <span class="skill-progress" style="width: 80%"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONTACT SECTION -->
-      <section id="contact" class="contact section">
-        <div class="container contact-container grid">
-          <div class="contact-content">
-            <span class="section-subtitle" data-i18n="contact-section-subtitle"
-              >| Contato</span
-            >
-            <h2 class="section-title" data-i18n="contact-section-title">
-              Vamos Iniciar Um Projeto!
-            </h2>
-            <p class="contact-description" data-i18n="contact-description">
-              Tem alguma ideia em mente ou precisa de ajuda com uma plataforma
-              incrível? Me mande uma mensagem e vamos conversar sobre o seu
-              futuro digital.
-            </p>
-
-            <div class="contact-info">
-              <div class="info-item">
-                <i class="fa-solid fa-envelope"></i>
-                <div>
-                  <h4 data-i18n="contact-email-title">E-mail Comercial</h4>
-                  <p>contact@devwebwizard.com</p>
-                </div>
-              </div>
-              <div class="info-item">
-                <i class="fa-solid fa-location-dot"></i>
-                <div>
-                  <h4 data-i18n="contact-location-title">Localização</h4>
-                  <p data-i18n="contact-location">Vera Cruz do Oeste, PR - Brasil</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <form action="" class="contact-form grid">
-            <div class="form-inputs grid">
-              <input
-                type="text"
-                placeholder="Seu Nome Completo"
-                class="form-input"
-                data-i18n="contact-form-name"
-                required
-              />
-              <input
-                type="email"
-                placeholder="Endereço de E-mail"
-                class="form-input"
-                data-i18n="contact-form-email"
-                required
-              />
-            </div>
-            <input
-              type="text"
-              placeholder="Assunto (Design, Dev, Consulta...)"
-              class="form-input"
-              data-i18n="contact-form-subject"
-              required
-            />
-            <textarea
-              placeholder="Como posso te ajudar hoje?..."
-              class="form-input"
-              data-i18n="contact-form-msg"
-              cols="30"
-              rows="6"
-              required
-            ></textarea>
-
-            <button
-              type="submit"
-              class="btn btn-primary"
-              data-i18n="contact-btn"
-            >
-              Mandar Mensagem <i class="fa-regular fa-paper-plane"></i>
-            </button>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="container footer-container">
-        <div class="footer-logo">
-          <i class="fa-solid fa-layer-group"></i>
-          <span>Portfólio.</span>
-        </div>
-        <p class="footer-copy" data-i18n="footer-copy">
-          &#169; 2026 Danilo Alves Pérez. Desenvolvido com carinho.
-        </p>
-        <div class="footer-socials">
-          <a
-            href="https://www.linkedin.com/in/danilo-alves-perez/"
-            target="_blank"
-            class="social-link"
-            ><i class="fa-brands fa-linkedin-in"></i
-          ></a>
-          <a
-            href="https://github.com/dap4ever"
-            target="_blank"
-            class="social-link"
-            ><i class="fa-brands fa-github"></i
-          ></a>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <!-- Custom JS -->
-    <script src="./js/i18n.js"></script>
-    <script src="./js/main.js"></script>
-  </body>
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="services-section-subtitle">| Meus Serviços</span>
+          <h2 class="section-title" data-i18n="services-section-title">
+            Serviços Que Ofereço.
+          </h2>
+        </div>
+
+        <div class="services-grid grid">
+          <div class="service-card active">
+            <div class="service-icon">
+              <i class="fa-brands fa-angular"></i>
+            </div>
+            <h3 class="service-title" data-i18n="service-1-title">
+              Front-End Avançado
+            </h3>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-1-item-1">Aplicações React & Vue</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-1-item-2">Interfaces em Angular</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-1-item-3">Performance & SEO</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-1-item-4">Design Responsivo</span>
+              </li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-brands fa-java"></i>
+            </div>
+            <h3 class="service-title" data-i18n="service-2-title">
+              Back-End & APIs
+            </h3>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-2-item-1">Arquitetura em Java</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-2-item-2">APIs RESTful com PHP</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-2-item-3">Integrações Complexas</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-2-item-4">Banco de Dados & Segurança</span>
+              </li>
+            </ul>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fa-brands fa-wordpress"></i>
+            </div>
+            <h3 class="service-title" data-i18n="service-3-title">
+              CMS & WordPress
+            </h3>
+            <ul class="service-list">
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-3-item-1">Temas Personalizados</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-3-item-2">Desenvolvimento de Plugins</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-3-item-3">Otimização de Lojas (WooCommerce)</span>
+              </li>
+              <li>
+                <i class="fa-solid fa-angles-right"></i>
+                <span data-i18n="service-3-item-4">Manutenção Avançada</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="portfolio section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-subtitle" data-i18n="portfolio-section-subtitle">| Meu Portfólio</span>
+          <h2 class="section-title" data-i18n="portfolio-section-title">
+            Projetos Recentes.
+          </h2>
+        </div>
+
+        <div class="portfolio-grid grid">
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img
+                src="https://agenciaf2f.com/wp-content/themes/agencia-new/assets/images/logos/novo-logo-banner-header.png"
+                alt="Agência F2F" class="portfolio-img logo-mode dark-bg" />
+              <div class="portfolio-overlay">
+                <a href="https://agenciaf2f.com/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-1-cat">WordPress / Marketing</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-1-title">
+                Agência F2F MKT
+              </h3>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img src="https://glp.com.br/wp-content/webp-express/webp-images/themes/glp/images/logo.png.webp"
+                alt="GLP" class="portfolio-img logo-mode dark-bg" />
+              <div class="portfolio-overlay">
+                <a href="https://glp.com.br/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-2-cat">WordPress / Corporativo</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-2-title">
+                GLP Gestora de Galpões
+              </h3>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img src="https://cuidadosemlimites.com.br/wp-content/uploads/2024/04/Logo_GEHealthcare-01.png"
+                alt="Cuidado Sem Limites" class="portfolio-img logo-mode" />
+              <div class="portfolio-overlay">
+                <a href="https://cuidadosemlimites.com.br/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-3-cat">WordPress / Saúde</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-3-title">
+                Cuidado Sem Limites (GE)
+              </h3>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img
+                src="https://imobiliariainserra.com.br/wp-content/themes/imobiliaria-inserra/assets/images/inserra-logo.png"
+                alt="Imobiliária Inserra" class="portfolio-img logo-mode" />
+              <div class="portfolio-overlay">
+                <a href="https://imobiliariainserra.com.br/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-4-cat">WordPress / Imobiliário</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-4-title">
+                Imobiliária Inserra
+              </h3>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img src="https://www.newvalue.com.br/_nuxt/img/logo-newvalue.396df28.png" alt="New Value"
+                class="portfolio-img logo-mode" />
+              <div class="portfolio-overlay">
+                <a href="https://www.newvalue.com.br/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-5-cat">Vue & Laravel / Plataforma</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-5-title">
+                New Value Benefícios
+              </h3>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img src="https://diversihub.einstein.br/wp-content/themes/pullup-theme/assets/img/logo.svg"
+                alt="Diversihub" class="portfolio-img logo-mode dark-bg" />
+              <div class="portfolio-overlay">
+                <a href="https://diversihub.einstein.br/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-6-cat">WordPress / Institucional</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-6-title">
+                Diversihub Einstein
+              </h3>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img src="https://diabetessinlimites.com/wp-content/uploads/2026/02/Vector.png" alt="Diabetes Sin Limites"
+                class="portfolio-img logo-mode" />
+              <div class="portfolio-overlay">
+                <a href="https://diabetessinlimites.com/mdi/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-7-cat">WordPress / Landing Page</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-7-title">
+                Diabetes Sin Limites
+              </h3>
+            </div>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img src="https://abrafati.com.br/wp-content/themes/pro/images/logo.png" alt="Abrafati"
+                class="portfolio-img logo-mode" />
+              <div class="portfolio-overlay">
+                <a href="https://abrafati.com.br/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-8-cat">WordPress / Institucional</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-8-title">
+                Abrafati
+              </h3>
+            </div>
+          </div>
+          <div class="portfolio-card">
+            <div class="portfolio-img-wrapper">
+              <img
+                src="https://healthmeds.com.br/wp-content/uploads/2024/11/logo-header-health-meds_20240923-1555-1.webp"
+                alt="Health Meds" class="portfolio-img logo-mode" />
+              <div class="portfolio-overlay">
+                <a href="https://healthmeds.com.br/" target="_blank" class="portfolio-link"><i
+                    class="fa-solid fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="portfolio-content">
+              <span class="portfolio-category" data-i18n="portfolio-9-cat">WordPress / Saúde</span>
+              <h3 class="portfolio-title" data-i18n="portfolio-9-title">
+                Health Meds
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills section">
+      <div class="container skills-container grid">
+        <div class="skills-data">
+          <span class="section-subtitle" data-i18n="skills-section-subtitle">| Habilidades Especiais</span>
+          <h2 class="section-title" data-i18n="skills-section-title">
+            Minha Zona de Genialidade.
+          </h2>
+          <p class="skills-description" data-i18n="skills-description">
+            Com sólida experiência técnica e uma visão aguçada para o design,
+            entrego produtos dinâmicos, completos e otimizados para encantar
+            usuários em todo o mundo.
+          </p>
+          <a href="resume.html" id="btn-resume-view" class="btn btn-primary mt-4" data-i18n="skills-btn"
+            style="position: relative; z-index: 99;">Visualizar Currículo <i class="fa-solid fa-eye"></i></a>
+        </div>
+
+        <div class="skills-bars">
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name" data-i18n="skill-1-name">Front-End Avançado (React, Vue, Angular)</span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar">
+              <span class="skill-progress" style="width: 90%"></span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name" data-i18n="skill-2-name">PHP & WordPress</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar">
+              <span class="skill-progress" style="width: 85%"></span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name" data-i18n="skill-3-name">Java & Arquitetura Back-End (Estudando)</span>
+              <span class="skill-percent">60%</span>
+            </div>
+            <div class="skill-bar">
+              <span class="skill-progress" style="width: 60%"></span>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-info">
+              <span class="skill-name" data-i18n="skill-4-name">Banco de Dados & Integração REST</span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar">
+              <span class="skill-progress" style="width: 80%"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact section">
+      <div class="container contact-container grid">
+        <div class="contact-content">
+          <span class="section-subtitle" data-i18n="contact-section-subtitle">| Contato</span>
+          <h2 class="section-title" data-i18n="contact-section-title">
+            Vamos Iniciar Um Projeto!
+          </h2>
+          <p class="contact-description" data-i18n="contact-description">
+            Tem alguma ideia em mente ou precisa de ajuda com uma plataforma
+            incrível? Me mande uma mensagem e vamos conversar sobre o seu
+            futuro digital.
+          </p>
+
+          <div class="contact-info">
+            <div class="info-item">
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <h4 data-i18n="contact-email-title">E-mail Comercial</h4>
+                <p>contact@devwebwizard.com</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <h4 data-i18n="contact-location-title">Localização</h4>
+                <p data-i18n="contact-location">Vera Cruz do Oeste, PR - Brasil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form grid">
+          <!-- Campo oculto para enviar o idioma atual -->
+          <input type="hidden" name="lang" id="form-lang" value="pt" />
+          <div class="form-inputs grid">
+            <input type="text" name="name" placeholder="Seu Nome Completo" class="form-input"
+              data-i18n="contact-form-name" required />
+            <input type="email" name="email" placeholder="Endereço de E-mail" class="form-input"
+              data-i18n="contact-form-email" required />
+          </div>
+          <input type="text" name="subject" placeholder="Assunto (Design, Dev, Consulta...)" class="form-input"
+            data-i18n="contact-form-subject" required />
+          <textarea name="message" placeholder="Como posso te ajudar hoje?..." class="form-input"
+            data-i18n="contact-form-msg" cols="30" rows="6" required></textarea>
+
+          <button type="submit" class="btn btn-primary" data-i18n="contact-btn">
+            Mandar Mensagem <i class="fa-regular fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE SUCESSO -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Fechar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="modal-icon">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h2 class="modal-title">Mensagem Enviada!</h2>
+      <p class="modal-text">Obrigado pelo contato. Responderei em breve no seu e-mail. 🚀</p>
+      <button class="btn btn-primary modal-btn" id="modal-ok">Fechar <i class="fa-solid fa-check"></i></button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-logo">
+        <i class="fa-solid fa-layer-group"></i>
+        <span>Portfólio.</span>
+      </div>
+      <p class="footer-copy" data-i18n="footer-copy">
+        &#169; 2026 Danilo Alves Pérez. Desenvolvido com carinho.
+      </p>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/danilo-alves-perez/" target="_blank" class="social-link"><i
+            class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://github.com/dap4ever" target="_blank" class="social-link"><i
+            class="fa-brands fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom JS -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LeO1IMsAAAAANl0zSGh0IePT7bUNLMLvzathyb5"></script>
+  <script src="./js/i18n.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
 </html>

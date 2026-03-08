@@ -36,7 +36,6 @@ navLinks.forEach((n) => n.addEventListener("click", linkAction));
    ========================================= */
 function scrollHeader() {
   const header = document.getElementById("header");
-  // Quando o scroll for maior que 50 viewport height, adiciona a classe scroll-header na tag header
   if (this.scrollY >= 50) {
     header.classList.add("scroll-header");
   } else {
@@ -44,3 +43,64 @@ function scrollHeader() {
   }
 }
 window.addEventListener("scroll", scrollHeader);
+
+/* =========================================
+   FORMULÁRIO DE CONTATO VIA AJAX + MODAL
+   ========================================= */
+const contactForm = document.getElementById("contact-form");
+const successModal = document.getElementById("success-modal");
+const modalClose   = document.getElementById("modal-close");
+const modalOk      = document.getElementById("modal-ok");
+
+function openModal() {
+  successModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  successModal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector("[type='submit']");
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Enviando... <i class="fa-solid fa-spinner fa-spin"></i>';
+    submitBtn.disabled = true;
+
+    try {
+      // Gera token reCAPTCHA v3
+      const token = await grecaptcha.execute('6LeO1IMsAAAAANl0zSGh0IePT7bUNLMLvzathyb5', { action: 'contact' });
+
+      const formData = new FormData(contactForm);
+      formData.append('g-recaptcha-response', token);
+
+      const res  = await fetch("contact.php", { method: "POST", body: formData });
+      const data = await res.json();
+
+      if (data.success) {
+        contactForm.reset();
+        openModal();
+      } else {
+        alert(data.message || "Erro ao enviar. Tente novamente.");
+      }
+    } catch {
+      alert("Erro de rede. Verifique sua conexão e tente novamente.");
+    } finally {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+if (modalClose) modalClose.addEventListener("click", closeModal);
+if (modalOk)    modalOk.addEventListener("click", closeModal);
+if (successModal) {
+  successModal.addEventListener("click", (e) => {
+    if (e.target === successModal) closeModal();
+  });
+}
+
