@@ -1,0 +1,18 @@
+# Dependências e cache
+node_modules/
+.cache/
+
+# Configurações sensíveis — NUNCA commitar
+config.php
+
+# PHPMailer (biblioteca de terceiros — instalar separado no servidor)
+src/
+phpmailer/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log

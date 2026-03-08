@@ -1,4 +1,7 @@
 <?php
+// Carrega configurações sensíveis (não versionado no git)
+require __DIR__ . '/config.php';
+
 // Carrega as classes do PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -7,6 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'phpmailer/Exception.php';
 require 'phpmailer/PHPMailer.php';
 require 'phpmailer/SMTP.php';
+
 
 header("Content-Type: application/json");
 
@@ -26,7 +30,7 @@ if (empty($name) || empty($email) || empty($subject) || empty($message) || !filt
 }
 
 // Verificar reCAPTCHA
-$recaptchaSecret = '6LeO1IMsAAAAAK9CoAp2fnihtLrlXpqjJUyV4J7A';
+$recaptchaSecret = RECAPTCHA_SECRET;
 $recaptchaToken  = $_POST['g-recaptcha-response'] ?? '';
 
 if (empty($recaptchaToken)) {
@@ -47,17 +51,17 @@ $mail = new PHPMailer(true);
 try {
     // Configurações do servidor SMTP (Hostinger)
     $mail->isSMTP();
-    $mail->Host = 'smtp.hostinger.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'contact@devwebwizard.com'; // Seu e-mail na Hostinger
-    $mail->Password = 'Dap@28260303';           // Senha criada na Hostinger
+    $mail->Host       = SMTP_HOST;
+    $mail->SMTPAuth   = true;
+    $mail->Username   = SMTP_USER;
+    $mail->Password   = SMTP_PASS;
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 465;
-    $mail->CharSet = 'UTF-8';
+    $mail->Port       = SMTP_PORT;
+    $mail->CharSet    = 'UTF-8';
 
     // Remetente e destinatário
-    $mail->setFrom('contact@devwebwizard.com', 'Portfólio - Danilo Pérez');
-    $mail->addAddress('contact@devwebwizard.com', 'Danilo Pérez');
+    $mail->setFrom(SMTP_USER, 'Portfólio - Danilo Pérez');
+    $mail->addAddress(MAIL_TO, 'Danilo Pérez');
     $mail->addReplyTo($email, $name);
 
     // Conteúdo do e-mail
@@ -126,15 +130,15 @@ try {
 
     $autoReply = new PHPMailer(true);
     $autoReply->isSMTP();
-    $autoReply->Host       = 'smtp.hostinger.com';
+    $autoReply->Host       = SMTP_HOST;
     $autoReply->SMTPAuth   = true;
-    $autoReply->Username   = 'contact@devwebwizard.com';
-    $autoReply->Password   = 'Dap@28260303';
+    $autoReply->Username   = SMTP_USER;
+    $autoReply->Password   = SMTP_PASS;
     $autoReply->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $autoReply->Port       = 465;
+    $autoReply->Port       = SMTP_PORT;
     $autoReply->CharSet    = 'UTF-8';
 
-    $autoReply->setFrom('contact@devwebwizard.com', 'Danilo Pérez | Dev');
+    $autoReply->setFrom(SMTP_USER, 'Danilo Pérez | Dev');
     $autoReply->addAddress($email, $name);
     $autoReply->isHTML(true);
     $autoReply->Subject = $t['subject'];
