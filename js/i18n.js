@@ -10,7 +10,7 @@ const translations = {
 
     // Hero
     "hero-subtitle": "Desenvolvedor Web Full-Stack",
-    "hero-title-1": "Olá! Eu sou o<br>",
+    "hero-title-1": "Olá! Eu sou o <br>",
     "hero-description":
       "Especialista Front-end na construção de interfaces de usuário dinâmicas (Vue, React, Angular), complementado por sólida experiência em PHP/WordPress e em contínuo aprendizado da arquitetura Java.",
     "hero-btn-portfolio": "Ver Portfólio",
@@ -78,6 +78,7 @@ const translations = {
       "Tem algum projeto web em mente ou precisa de um desenvolvedor experiente para a sua equipe? Me mande uma mensagem e vamos conversar.",
     "contact-email-title": "E-mail Comercial",
     "contact-location-title": "Localização",
+    "contact-location": "Vera Cruz do Oeste, PR - Brasil",
     "contact-form-name": "Seu Nome Completo",
     "contact-form-email": "Endereço de E-mail",
     "contact-form-subject": "Assunto (Front-end, Java, Consulta...)",
@@ -167,6 +168,7 @@ const translations = {
       "Do you have a web project in mind or need an experienced developer for your team? Send me a message and let's talk.",
     "contact-email-title": "Business E-mail",
     "contact-location-title": "Location",
+    "contact-location": "Vera Cruz do Oeste, PR - Brazil",
     "contact-form-name": "Your Full Name",
     "contact-form-email": "E-mail Address",
     "contact-form-subject": "Subject (Front-end, Java, Inquiry...)",
@@ -255,6 +257,7 @@ const translations = {
       "¿Tienes algún proyecto web en mente o necesitas un desarrollador experimentado para tu equipo? Envíame un mensaje y hablemos.",
     "contact-email-title": "Correo Comercial",
     "contact-location-title": "Ubicación",
+    "contact-location": "Vera Cruz do Oeste, PR - Brasil",
     "contact-form-name": "Tu Nombre Completo",
     "contact-form-email": "Dirección de Correo",
     "contact-form-subject": "Asunto (Front-end, Java, Consulta...)",
@@ -299,7 +302,7 @@ function setLanguage(lang) {
             element.innerHTML =
               translations[lang][key] +
               `
-               <span class="highlight">Danilo</span>
+               <span class="highlight">Danilo Pérez</span>
                <svg class="title-shape" viewBox="0 0 200 20" xmlns="http://www.w3.org/2000/svg"><path d="M0,10 Q50,20 100,10 T200,10" fill="none" stroke="var(--clr-accent)" stroke-width="4" stroke-linecap="round"/></svg>
                `;
           }
@@ -316,6 +319,7 @@ function setLanguage(lang) {
                 element.innerHTML = translations[lang][key] + " ";
                 element.appendChild(icon);
               } else if (key === "skills-btn") {
+                // Manter o ícone
                 element.innerHTML = translations[lang][key] + " ";
                 element.appendChild(icon);
               } else if (key === "hero-btn-portfolio") {
@@ -358,7 +362,31 @@ function setLanguage(lang) {
     currentFlagEl.className = `fi ${currentFlagMap[lang]}`;
     currentTextEl.textContent = currentTextMap[lang];
   }
+
+  // Update Resume Viewer and Download Links if on resume.html
+  const resumeIframe = document.querySelector(".resume-iframe");
+  const downloadLink = document.querySelector(".download-actions .btn-primary");
+
+  if (resumeIframe && downloadLink) {
+    const pdfPath = `./assets/img/docs/curriculo-${lang}.pdf`;
+    resumeIframe.src = pdfPath;
+
+    // Update the fallback download link inside the iframe
+    resumeIframe.innerHTML = `Seu navegador não suporta visualização de PDF. <a href="${pdfPath}">Clique aqui para baixar.</a>`;
+
+    // Update the main download button
+    downloadLink.href = pdfPath;
+
+    // Set an appropriate download name
+    const downloadNames = {
+      pt: "Curriculo_Danilo_Alves_Perez.pdf",
+      en: "Danilo_Alves_Perez_Resume.pdf",
+      es: "Curriculo_Danilo_Alves_Perez_ES.pdf"
+    }
+    downloadLink.download = downloadNames[lang];
+  }
 }
+
 
 // Initialize language on DOM Load
 document.addEventListener("DOMContentLoaded", () => {

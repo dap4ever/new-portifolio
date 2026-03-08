@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currículo | Danilo Alves Pérez</title>
+
+    <!-- Meta tags for SEO -->
+    <meta
+      name="description"
+      content="Visualizar e baixar o currículo profissional de Danilo Alves Pérez."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- Flag Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Portifólio.</span>
+        </a>
+
+        <nav class="nav" id="nav-menu">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="index.html#home" class="nav-link" data-i18n="nav-home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="index.html#services" class="nav-link" data-i18n="nav-services"
+                >Serviços</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="index.html#skills" class="nav-link" data-i18n="nav-skills"
+                >Habilidades</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="index.html#portfolio" class="nav-link" data-i18n="nav-portfolio"
+                >Projetos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="index.html#contact" class="nav-link" data-i18n="nav-contact"
+                >Contato</a
+              >
+            </li>
+          </ul>
+
+          <div class="nav-close" id="nav-close">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </nav>
+
+        <div class="header-actions">
+          <!-- Botão Dropdown de Idioma -->
+          <div class="lang-dropdown">
+            <button class="lang-dropdown-btn" id="lang-dropdown-btn">
+              <span class="fi fi-br" id="current-lang-flag"></span>
+              <span id="current-lang-text">Português</span>
+              <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem"></i>
+            </button>
+            <ul class="lang-dropdown-menu">
+              <li>
+                <a href="#" class="lang-option" data-lang="pt"
+                  ><span class="fi fi-br"></span> Português</a
+                >
+              </li>
+              <li>
+                <a href="#" class="lang-option" data-lang="en"
+                  ><span class="fi fi-us"></span> English</a
+                >
+              </li>
+              <li>
+                <a href="#" class="lang-option" data-lang="es"
+                  ><span class="fi fi-es"></span> Español</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <a href="index.html#contact" class="btn btn-outline" data-i18n="nav-hire"
+            >Contrate-me <i class="fa-solid fa-angles-right"></i
+          ></a>
+          <div class="nav-toggle" id="nav-toggle">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="section container resume-viewer-container">
+        <div class="resume-header">
+            <span class="section-subtitle">| Meu Currículo</span>
+            <h2 class="section-title">Visualizar e Baixar</h2>
+            
+            <div class="download-actions">
+                <a href="./assets/img/docs/curriculo-en.pdf" download="Danilo_Alves_Perez_Resume.pdf" class="btn btn-primary">
+                    Baixar PDF <i class="fa-solid fa-download"></i>
+                </a>
+                <a href="index.html#contact" class="btn btn-outline">
+                    Entrar em Contato <i class="fa-regular fa-paper-plane"></i>
+                </a>
+            </div>
+        </div>
+
+        <iframe src="./assets/img/docs/curriculo-en.pdf" class="resume-iframe" title="Currículo PDF">
+            Seu navegador não suporta visualização de PDF. <a href="./assets/img/docs/curriculo-en.pdf">Clique aqui para baixar.</a>
+        </iframe>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-logo">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Portfólio.</span>
+        </div>
+        <p class="footer-copy" data-i18n="footer-copy">
+          &#169; 2026 Danilo Alves Pérez. Desenvolvido com carinho.
+        </p>
+        <div class="footer-socials">
+          <a
+            href="https://www.linkedin.com/in/danilo-alves-perez/"
+            target="_blank"
+            class="social-link"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+          <a
+            href="https://github.com/dap4ever"
+            target="_blank"
+            class="social-link"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="./js/i18n.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
