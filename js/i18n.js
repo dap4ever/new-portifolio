@@ -368,7 +368,7 @@ function setLanguage(lang) {
   const downloadLink = document.querySelector(".download-actions .btn-primary");
 
   if (resumeIframe && downloadLink) {
-    const pdfPath = `./assets/img/docs/curriculo-${lang}.pdf`;
+    const pdfPath = `./assets/docs/curriculo-${lang}.pdf`;
     resumeIframe.src = pdfPath;
 
     // Update the fallback download link inside the iframe

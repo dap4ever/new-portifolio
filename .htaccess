@@ -2,3 +2,18 @@ Options -Indexes
 
 # Página de erro 404 personalizada
 ErrorDocument 404 /404.html
+
+# Forçar a remoção de index.html da URL
+RewriteEngine On
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Remover extensão .html das URLs (amigáveis)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Se o usuário digitar .html na URL, remove via redirect 301
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.+)\.html\ HTTP/
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
